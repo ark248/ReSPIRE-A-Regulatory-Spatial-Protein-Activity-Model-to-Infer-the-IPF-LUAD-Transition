@@ -1,4 +1,4 @@
-# ReSPIRE: Regulatory Spatial Protein Activity Model
+# ReSPIRE: A Regulatory Spatial Protein Activity Model
 
 **ReSPIRE** predicts the activity of 7,060 regulatory proteins at single-cell resolution directly from H&E histopathology images, using embeddings from the [UNI pathology foundation model](https://www.nature.com/articles/s41591-024-02857-3) paired with a residual MLP regression head. Ground truth protein activity is derived from Visium HD spatial transcriptomics via MetaVIPER.
 
