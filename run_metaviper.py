@@ -11,7 +11,7 @@ import pyviper
 #helpers to load function
 
 def load_interactome(network_path: str, name: str, regul_size: int):
-    """Load an ARACNe3 TSV and wrap it as a pyviper Interactome."""
+    #Load an ARACNe3 TSV and wrap it as a pyviper Interactome.
     print(f"  Loading {name}: {network_path}")
     if not os.path.isfile(network_path):
         print(f"ERROR: Network file not found: {network_path}")
@@ -36,7 +36,7 @@ def run_metaviper(
     t0 = time.time()
 
 
-    #load spatial expression data
+    #load the spatial expression data
     print(f"\n[1/4] Loading spatial data: {input_h5ad}")
     if not os.path.isfile(input_h5ad):
         print(f"ERROR: Input H5AD not found: {input_h5ad}")
