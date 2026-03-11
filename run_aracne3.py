@@ -1,11 +1,10 @@
 
 import subprocess
 import os 
-### --- RUNNING ARACNE3 C++ CODE --- ###
+#ARACNe3 C++ Code
 def run_aracne3_app(exp_mat, output_folder, regulators, subnets):
+    #Run the ARACNe3 executable.
     """
-    Run the ARACNe3 executable.
-
     Parameters:
         base_dir (str): Base directory where ARACNe3 is installed.
         output_folder (str): The folder where ARACNe3 should write its output.
@@ -30,7 +29,7 @@ def run_aracne3_app(exp_mat, output_folder, regulators, subnets):
     print(" ".join(cmd))
     subprocess.run(cmd, check=True)
 
-        ### --- RUN C++ ARACNE EXECUTABLE --- ###
+        #Run the C++ ARACNe3 executable
 
 regulator_path = "/shares/vasciaveo_lab/aarulselvan/arachne/human_tf_cotf_plus_sig_surf.txt"
 
