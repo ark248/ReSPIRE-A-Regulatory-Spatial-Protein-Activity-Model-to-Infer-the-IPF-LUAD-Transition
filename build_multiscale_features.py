@@ -24,7 +24,7 @@ def _decode(raw):
 
 
 def load_features(feature_path: str) -> dict:
-    """Returns {barcode: np.array(1024,)}. First occurrence wins on duplicates."""
+    #Returns {barcode: np.array(1024,)}. First occurrence wins on duplicates.
     with h5py.File(feature_path, "r") as f:
         barcodes = _decode(f["barcodes"][:])
         features = np.array(f["features"], dtype=np.float32)
@@ -36,7 +36,7 @@ def load_features(feature_path: str) -> dict:
 
 
 def load_positions(pos_path: str) -> tuple[dict, dict]:
-    """Returns (barcode→grid_pos, grid_pos→barcode)."""
+    #Returns (barcode→grid_pos, grid_pos→barcode).
     df = pd.read_parquet(pos_path)
     bc_to_pos  = {}
     grid_to_bc = {}
@@ -50,7 +50,7 @@ def load_positions(pos_path: str) -> tuple[dict, dict]:
 
 
 def load_targets(h5ad_path: str) -> tuple[dict, list]:
-    """Returns ({barcode: np.array(n_proteins,)}, protein_names)."""
+    #Returns ({barcode: np.array(n_proteins,)}, protein_names).
     adata = ad.read_h5ad(h5ad_path)
     X = adata.X.toarray() if hasattr(adata.X, "toarray") else np.array(adata.X)
     X = X.astype(np.float32)
@@ -132,12 +132,6 @@ def main():
     global FEATURE_DIM, N_SCALES
     FEATURE_DIM = args.feat_dim
     N_SCALES    = 1 + len(NEIGHBOR_OFFSETS)
-
-    print("=" * 60)
-    print("  ReSPIRE — Multiscale Feature Construction")
-    print(f"  Neighbor offsets : {NEIGHBOR_OFFSETS}")
-    print(f"  Output dim       : {N_SCALES} × {FEATURE_DIM} = {N_SCALES * FEATURE_DIM}")
-    print("=" * 60)
 
     with open(args.config, "r") as f:
         cfg = yaml.safe_load(f)
